@@ -1,0 +1,20 @@
+<BitacoraScreen>:
+    name: "bitacora_screen"
+    BoxLayout:
+        orientation: "vertical"
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # Color blanco
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Pantalla de Bitácora"
+            font_size: 32
+            color: "black"
+            halign: "center"
+            size_hint_y: None
+
+        Button:
+            text: "Volver al Inicio"
+            on_press: app.root.current = "main"
