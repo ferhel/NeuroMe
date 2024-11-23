@@ -50,7 +50,37 @@ print("Tamaño de la data filtrada:")
 data_limpia = data.drop(data.columns[[5]], axis=1)
 data_limpia.info()
 
+#Modificando el formato de la información de algunas columnas númericas a columnas de texto.
+#La razon de esto es para una mejor visualización de la información mostrada al usuario, la base de datos presenta su información en base a números
+#esto hace que el entendimiento de los datos se dificulte debido a:
 
+#1: Solo se conoce el valor que representa el número en la columna gracias a la documentación de la base de datos.
+#2: Se pierde a la vista el valor buscado porque se utilizan los mismo valores representativos en varias columnas.
+#3: No es intuitivo ni práctico para el usuario.
+
+#Mapeo de los valores númericos que cambiaremos.
+
+#Columnas que obtienen valores diferentes a 0 = "No" y 1 = "Si".
+mapeados = {
+    "Gender" : {0: "Hombre", 1: "Mujer"},
+    "Ethnicity" : {0: "Caucásico", 1: "Afroamericano", 2: "Asiatico", 3: "Otros"},
+    "EducationLevel" : {0: "Nada", 1: "Escuela secundaria", 2: "Universidad", 3: "Superior"}
+}
+
+# Reemplazar los valores en cada columna usando un bucle.
+for columna, mapeado in mapeados.items():
+  data_limpia[columna] = data_limpia[columna].replace(mapeado)
+
+
+# Columnas a excluir del reemplazo de 0 y 1.
+excluir_columnas = ["Gender", "Ethnicity", "EducationLevel"]
+
+# Reemplazo de 0 y 1 a "No" y "Si".
+for columna in data_limpia.columns:
+  if columna not in excluir_columnas:
+    data_limpia[columna] = data_limpia[columna].replace({0: "No", 1: "Si"})
+
+data_limpia.head()
 
 #Creando un nuevo archivo csv con la data limpia.
 
