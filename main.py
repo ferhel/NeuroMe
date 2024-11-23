@@ -11,13 +11,7 @@ class MyScreenManager(ScreenManager):
 class MainScreen(Screen):
     pass
 
-class ContactosScreen(Screen):
-    pass
-
 class HistorialScreen(Screen):
-    pass
-
-class BitacoraScreen(Screen):
     pass
 
 class Main(App):
@@ -25,9 +19,7 @@ class Main(App):
         Window.title = "NeuroMe"  # Establecer el título de la ventana
         sm = MyScreenManager()
         sm.add_widget(MainScreen(name="main"))  # Pantalla principal
-        sm.add_widget(ContactosScreen(name="contactos_screen"))  # Pantalla de contactos
         sm.add_widget(HistorialScreen(name="historial_screen"))  # Pantalla de historial
-        sm.add_widget(BitacoraScreen(name="bitacora_screen"))  # Pantalla de bitácora
         return sm
 
 if __name__ == "__main__":
