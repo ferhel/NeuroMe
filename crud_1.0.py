@@ -306,7 +306,11 @@ def menu():
 
         elif opcion == "4":
             patient_id = int(input("Ingrese ID del paciente:"))
-            actualizar_paciente_opcion4(patient_id)
+            while True:
+                actualizar_paciente_opcion4(patient_id)
+                multiples_datos = input("¿Desea actualizar más datos? (Si/No): ").strip().lower()
+                if multiples_datos != "si":
+                    break
             
             
 
