@@ -1,4 +1,4 @@
-import csv
+import sqlite3
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
@@ -21,12 +21,12 @@ class PatientScreen(Screen):
         grid_layout.bind(minimum_height=grid_layout.setter('height'))  # Ajustar altura automáticamente
 
         # Ejemplo de datos de pacientes
-        pacientes_data = self.cargar_pacientes_csv('data/data_limpia.csv')
+        pacientes_data = self.cargar_pacientes_sqlite3()
 
 
         # Crear botones para cada paciente
-        for paciente in pacientes_data:
-            button = Button(text=f"ID: {paciente['PatientID']} - {paciente['Age']}, {paciente['Gender']}", size_hint_y=None,
+        for paciente in pacientes_data[:50]:  #Se determina un máximo de 50 pacientes visualizados
+            button = Button(text=f"ID: {paciente[0]} - {paciente[1]} - {paciente[2]}", size_hint_y=None,
                             height=40)
             button.bind(on_press=lambda x, p=paciente: self.mostrar_info(p))
             grid_layout.add_widget(button)
@@ -36,16 +36,28 @@ class PatientScreen(Screen):
 
         self.add_widget(main_layout)
 
-    def cargar_pacientes_csv(self, file_path):
+    def cargar_pacientes_sqlite3(self):
         pacientes = []
-        with open(file_path, mode='r', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                pacientes.append(row)
+        # Conectar a la base de datos SQLite3
+        connection = sqlite3.connect("clinica.db")
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
+
+        # Ejecutar la consulta para obtener todos los datos de los pacientes
+        cursor.execute("SELECT * FROM pacientes")
+        rows = cursor.fetchall()
+
+        # Agregar los datos a la lista de pacientes
+        for row in rows:
+            pacientes.append(row)
+        # Cerrar la conexión
+        connection.close()
         return pacientes
 
-    def mostrar_info(self, paciente_data):
+    def mostrar_info(self, pacientes_data):
 
-        print("Datos Completos:", paciente_data)
-
+        # Imprimir toda la información del paciente en la terminal
+        print("Datos Completos del Paciente:")
+        for column in pacientes_data.keys():  # Usar keys() para obtener los nombres de las columnas
+            print(f"{column}: {pacientes_data[column]}")  # Acceder a los valores de las columnas
 
