@@ -45,9 +45,10 @@ data.info()
 
 print("Tamaño de la data filtrada:")
 
-#Se elimino la columna: BMI.
+#Se elimino la columna: BMI,SystolicBP, DiastolicBP,CholesterolTotal, CholesterolLDL, CholesterolHDL,
+#CholesterolTriglycerides.
 
-data_limpia = data.drop(data.columns[[5]], axis=1)
+data_limpia = data.drop(data.columns[[5, 17, 18, 19, 20, 21, 22]], axis=1)
 data_limpia.info()
 
 #Modificando el formato de la información de algunas columnas númericas a columnas de texto.
