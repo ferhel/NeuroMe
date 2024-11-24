@@ -5,6 +5,7 @@
     MainScreen:
     HistorialScreen:
 
+
 <MainScreen>:
     name: "main"
     BoxLayout:
@@ -29,3 +30,7 @@
             Button:
                 text: "Historial"
                 on_press: app.root.current = "historial_screen"
+
+            Button:
+                text: "paintApp"
+                on_press: app.root.current = "patient"
