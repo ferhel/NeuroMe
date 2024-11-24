@@ -3,7 +3,7 @@ import pandas as pd
 
 # Conectar con la base de datos SQLite (se crea automáticamente si no existe)
 def conectar_bd():
-    return sqlite3.connect("clinica.db")
+    return sqlite3.connect("../clinica.db")
 
 # Leer el CSV en un DataFrame y retornarlo
 def leer_csv(ruta_csv):
@@ -38,12 +38,6 @@ def crear_tabla():
             Depression TEXT,
             HeadInjury TEXT,
             Hypertension TEXT,
-            SystolicBP INTEGER,
-            DiastolicBP INTEGER,
-            CholesterolTotal INTEGER,
-            CholesterolLDL INTEGER,
-            CholesterolHDL INTEGER,
-            CholesterolTriglycerides INTEGER,
             MMSE INTEGER,
             FunctionalAssessment TEXT,
             MemoryComplaints TEXT,
@@ -74,10 +68,9 @@ def insertar_datos_csv(ruta_csv):
             INSERT OR REPLACE INTO pacientes (
                 PatientID, Age, Gender, Ethnicity, EducationLevel, Smoking, AlcoholConsumption, PhysicalActivity,
                 DietQuality, SleepQuality, FamilyHistoryAlzheimers, CardiovascularDisease, Diabetes, Depression, HeadInjury,
-                Hypertension, SystolicBP, DiastolicBP, CholesterolTotal, CholesterolLDL, CholesterolHDL, CholesterolTriglycerides,
-                MMSE, FunctionalAssessment, MemoryComplaints, BehavioralProblems, ADL, Confusion, Disorientation,
+                Hypertension, MMSE, FunctionalAssessment, MemoryComplaints, BehavioralProblems, ADL, Confusion, Disorientation,
                 PersonalityChanges, DifficultyCompletingTasks, Forgetfulness, Diagnosis, DoctorInCharge
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, tuple(row))
     
     db.commit()
