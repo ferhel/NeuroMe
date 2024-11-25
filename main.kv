@@ -1,9 +1,9 @@
 
-#: include kv/historial_screen.kv
+#: include kv/EstadisticaScreen.kv
 
 <MyScreenManager>:
     MainScreen:
-    HistorialScreen:
+    EstadisticaScreen:
 
 
 <MainScreen>:
@@ -28,9 +28,9 @@
             height: 50
 
             Button:
-                text: "Historial"
-                on_press: app.root.current = "historial_screen"
-
-            Button:
                 text: "paintApp"
                 on_press: app.root.current = "patient"
+
+            Button:
+                text: "Estadisticas"
+                on_press: app.root.current = "estadistica_screen"

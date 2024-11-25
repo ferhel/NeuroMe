@@ -12,7 +12,7 @@ class MyScreenManager(ScreenManager):
 class MainScreen(Screen):
     pass
 
-class HistorialScreen(Screen):
+class EstadisticaScreen(Screen):
     pass
 
 
@@ -22,9 +22,10 @@ class Main(App):
         Window.tittle = "NeuroMe"  # Establecer el título de la ventana
         sm = MyScreenManager()
         sm.add_widget(MainScreen(name="main"))  # Pantalla principal
-        sm.add_widget(HistorialScreen(name="historial_screen"))
         sm.add_widget(PatientScreen(name="patient"))# Pantalla de historial
+        sm.add_widget(EstadisticaScreen(name="estadistica_screen"))
         return sm
+
 
 if __name__ == "__main__":
     Main().run()

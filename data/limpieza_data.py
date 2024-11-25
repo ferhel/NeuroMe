@@ -83,6 +83,7 @@ for columna in data_limpia.columns:
 
 data_limpia.head()
 
+
 #Creando un nuevo archivo csv con la data limpia.
 
 data_limpia.to_csv('data_limpia.csv', index=False)

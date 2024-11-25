@@ -99,7 +99,12 @@ def buscar_paciente_por_id(patient_id):
 
         # Si paciente es None, significa que no se encontró ningún paciente
         if paciente:
-            print(f"Paciente encontrado: {paciente}")
+            columnas = [desc[0] for desc in cursor.description]
+            # Crear un diccionario para mostrar los resultados
+            paciente_info = dict(zip(columnas, paciente))
+            print("Paciente encontrado:")
+            for columna, valor in paciente_info.items():
+                print(f"{columna}: {valor}")
         else:
             print("No se encontró ningún paciente con ese ID.")
 
@@ -199,7 +204,7 @@ def seleccionar_nivel_educativo():
         except ValueError:
             print("Por favor, ingresa un número entero válido entre 0 y 3.")
 #Actualizar datos unitarios para menú interactivo.
-def actualizar_paciente_opcion4(patient_id):
+def actualizar_paciente_opcion(patient_id):
     # Mostrar las columnas disponibles para actualizar
     columnas = [
         "Age", "Gender", "Ethnicity", "EducationLevel", "Smoking", "AlcoholConsumption", "PhysicalActivity",
@@ -307,7 +312,7 @@ def menu():
         elif opcion == "4":
             patient_id = int(input("Ingrese ID del paciente:"))
             while True:
-                actualizar_paciente_opcion4(patient_id)
+                actualizar_paciente_opcion(patient_id)
                 multiples_datos = input("¿Desea actualizar más datos? (Si/No): ").strip().lower()
                 if multiples_datos != "si":
                     break
