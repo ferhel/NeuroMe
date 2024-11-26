@@ -9,12 +9,15 @@
                 pos: self.pos
                 size: self.size
         Label:
-            text: "Pantalla de Historial"
+            text: "Estadísticas"
             font_size: 32
             color: "black"
             halign: "center"
             size_hint_y: None
 
+        Button:
+            text: "Descripciones generales"
+            on_press: app.desc_generales()
 
 
         Button:

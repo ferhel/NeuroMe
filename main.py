@@ -4,6 +4,7 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from patientApp import PatientScreen
 
+
 # Definimos el ScreenManager
 class MyScreenManager(ScreenManager):
     pass
@@ -25,6 +26,10 @@ class Main(App):
         sm.add_widget(PatientScreen(name="patient"))# Pantalla de historial
         sm.add_widget(EstadisticaScreen(name="estadistica_screen"))
         return sm
+
+    def desc_generales(self):
+        from graficas import descripciones_generales
+        descripciones_generales()
 
 
 if __name__ == "__main__":
