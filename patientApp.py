@@ -23,8 +23,15 @@ class PatientScreen(Screen):
         btn_menu.bind(on_press=self.abrir_menu_terminal)
         main_layout.add_widget(btn_menu)
 
+        # Botón para volver a la página principal
+        btn_back = Button(text='Volver a la Página Principal', size_hint=(1, 0.1),
+                          pos_hint={'x': 0, 'y': 0.8},
+                          background_color=(0.3, 0.3, 0.3, 1))
+        btn_back.bind(on_press=self.volver_a_pagina_principal)
+        main_layout.add_widget(btn_back)
+
         # Crear un ScrollView
-        scroll_view = ScrollView(size_hint=(1, 0.9), pos_hint={'x': 0, 'y': 0})  # Ocupa el 90% de la altura
+        scroll_view = ScrollView(size_hint=(1, 0.8), pos_hint={'x': 0, 'y': 0})  # Ocupa el 80% de la altura
         grid_layout = GridLayout(cols=1, size_hint_y=None)
         grid_layout.bind(minimum_height=grid_layout.setter('height'))  # Ajustar altura automáticamente
 
@@ -69,3 +76,6 @@ class PatientScreen(Screen):
 
     def abrir_menu_terminal(self, instance):
         menu()
+
+    def volver_a_pagina_principal(self, instance):
+        self.manager.current = 'main'
