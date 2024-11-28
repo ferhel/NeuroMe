@@ -10,9 +10,34 @@ def descripciones_generales():
     print("Estadísticas descriptivas generales:")
     print(data.describe())
 
-def estadisticas_columna_age():
-    print("\nEstadísticas de la columna 'Age':")
-    print(data['Age'].describe())
+def MMSE_grupos_edad():
+    bins = [0, 60, 70, 80, 90, 100]  # límites de los grupos de edad
+    labels = ['<60', '60-69', '70-79', '80-89', '>=90']  # Etiquetas para los grupos
+
+    data['Grupo_Edad'] = pd.cut(data['Age'], bins=bins, labels=labels, right=False)
+
+    # Crear el gráfico de caja
+    plt.figure(figsize=(12, 6))
+    sns.boxplot(x='Grupo_Edad', y='MMSE', data=data)
+    plt.title('Puntuaciones del MMSE por Grupo de Edad')
+    plt.xlabel('Grupo de Edad')
+    plt.ylabel('Puntuación del MMSE')
+    plt.grid()
+    plt.show()
+
+def Mapa_calor():
+    # Filtrar solo columnas numéricas
+    numeric_data = data.select_dtypes(include=["number"])
+
+    # Calcular la matriz de correlación
+    corr = numeric_data.corr()
+
+    # Crear el mapa de calor
+    plt.figure(figsize=(12, 8))
+    sns.heatmap(corr, annot=True, fmt=".2f", cmap='coolwarm', square=True, cbar_kws={"shrink": .8})
+    plt.title('Mapa de Calor de la Matriz de Correlación')
+    plt.show()
+
 
 def frecuencia_etnicidad():
     print("\nFrecuencia de los valores en 'Ethnicity':")

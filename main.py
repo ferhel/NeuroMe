@@ -31,6 +31,13 @@ class Main(App):
         from graficas import descripciones_generales
         descripciones_generales()
 
+    def MMSE_grupos_edad(self):
+        from graficas import MMSE_grupos_edad
+        MMSE_grupos_edad()
+
+    def Mapa_calor(self):
+        from graficas import Mapa_calor
+        Mapa_calor()
 
 if __name__ == "__main__":
     Main().run()
