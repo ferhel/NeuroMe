@@ -7,6 +7,15 @@ LENGTH_KEYPOINTS = 1662
 MODEL_FRAMES = 15
 
 # PATHS
+# constants.py
+import os
+
+# Ruta ABSOLUTA del directorio del proyecto
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
+
+# Rutas clave (¡Verifica que coincidan!)
+ROOT_PATH = os.path.join(BASE_DIR, "data")  # Apunta a /data
+FRAME_ACTIONS_PATH = os.path.join(ROOT_PATH, "frames_actions")  # Ahora sí: data/frames
 ROOT_PATH = os.getcwd()
 FRAME_ACTIONS_PATH = os.path.join(ROOT_PATH, "frame_actions")
 DATA_PATH = os.path.join(ROOT_PATH, "data")
