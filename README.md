@@ -17,3 +17,6 @@ numpy >= 1.24
 matplotlib >= 3.7
 opencv-python >= 4.7
 mediapipe >= 0.10
+```
+
+#Instalación
