@@ -19,4 +19,12 @@ opencv-python >= 4.7
 mediapipe >= 0.10
 ```
 
-#Instalación
+# Instalación
+pip install tensorflow keras scikit-learn pandas numpy matplotlib opencv-python mediapipe
+
+# Clases Soportadas
+CLASSES = [
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+    'K', 'L', 'M', 'N', 'O', 'Q', 'R', 'U', 'V', 'W',
+    'X', 'Y', 'Z', 'nothing', 'space'
+]
